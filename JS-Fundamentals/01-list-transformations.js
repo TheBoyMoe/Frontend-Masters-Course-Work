@@ -235,6 +235,4 @@ const  presentSuspects = _.filter(videoData, function(item){
 });
 
 /// Exercise - return string array of the present suspects
-_.map(presentSuspects, function(item){
-  return item.name;
-});
+_.map(presentSuspects, item => item.name );
