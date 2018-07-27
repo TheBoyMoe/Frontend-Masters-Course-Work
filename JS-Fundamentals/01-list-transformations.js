@@ -60,3 +60,24 @@ _.each(['Tom', 'Dick', 'Harry'], function(name, i, list){
     console.log(name, 'is last');
   }
 });
+
+
+////////////////////////////////////////
+// implement map function
+_.map = function(list, callback){
+  const array = [];
+  if(Array.isArray(list)){
+    for(let i = 0; i <list.length; i++){
+      array.push(callback(list[i], i, list));
+    }
+  } else {
+    for(let key in list){
+      array.push(callback(list[key], key, list));
+    }
+  }
+  return array;
+};
+
+_.map(['candlestick', 'lead pipe', 'revolver'], function(weapon){
+  return `broken ${weapon}`;
+});
