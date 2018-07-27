@@ -114,3 +114,122 @@ _.each(suspectList, function(suspect){
   suspect.speak();
 });
 
+//////////////////////////////////////////////////
+// FILTER implementation
+const videoData = [
+  {
+    name: 'Miss Scarlet',
+    present: true,
+    rooms: [
+      {kitchen: false},
+      {ballroom: false},
+      {conservatory: false},
+      {'dining room': false},
+      {'billiard room': false},
+      {library: false}
+    ]
+  },
+  {
+    name: 'Mrs. White',
+    present: false,
+    rooms: [
+      {kitchen: false},
+      {ballroom: false},
+      {conservatory: false},
+      {'dining room': false},
+      {'billiard room': false},
+      {library: false}
+    ]
+  },
+  {
+    name: 'Reverend Green',
+    present: true,
+    rooms: [
+      {kitchen: false},
+      {ballroom: false},
+      {conservatory: false},
+      {'dining room': false},
+      {'billiard room': false},
+      {library: false}
+    ]
+  },
+  {
+    name: 'Rusty',
+    present: false,
+    rooms: [
+      {kitchen: false},
+      {ballroom: false},
+      {conservatory: false},
+      {'dining room': false},
+      {'billiard room': false},
+      {library: false}
+    ]
+  },
+  {
+    name: 'Colonel Mustard',
+    present: true,
+    rooms: [
+      {kitchen: false},
+      {ballroom: false},
+      {conservatory: false},
+      {'dining room': false},
+      {'billiard room': false},
+      {library: false}
+    ]
+  },
+  {
+    name: 'Professor Plum',
+    present: true,
+    rooms: [
+      {kitchen: false},
+      {ballroom: false},
+      {conservatory: false},
+      {'dining room': false},
+      {'billiard room': false},
+      {library: false}
+    ]
+  }
+];
+
+_.filter = function(list, callback){
+  const array = [];
+  _.each(list, function(item, i, list){
+    // WILL NOT WORK, ADDS undefined values to array where the cb returns false
+    array.push(callback(item, i, list)); 
+  });
+  return array;
+};
+
+
+// 1st implementation - correct solution
+_.filter = function(arr, cb){
+  const array = [];
+  if(Array.isArray(arr)){
+    for(let i = 0; i < arr.length; i++){
+      if(cb(arr[i], i, arr)) {
+        array.push(arr[i]);
+      }
+    }
+  } else {
+    for(let key in arr){
+      if(cb(arr[key], i, arr)){
+        array.push(arr[key]); 
+      }
+    }
+  }
+  return array;
+};
+
+// 2nd implementation using _.each(can handle arrays and obj)
+_.filter = function(arr, cb){
+  const array = [];
+  _.each(arr, function(val, i, list){
+    if(cb(val, i, list)) array.push(val);
+  });
+  return array;
+};
+
+// the cb just needs to return a boolean
+_.filter(videoData, function(item){
+  return item.present;
+}); 
