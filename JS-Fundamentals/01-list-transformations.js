@@ -81,3 +81,36 @@ _.map = function(list, callback){
 _.map(['candlestick', 'lead pipe', 'revolver'], function(weapon){
   return `broken ${weapon}`;
 });
+
+/////////////////////////////////////////
+// Alternate _.map implementation
+_.map = function(list, callback){
+  const array = [];
+  _.each(list, function(item, i, list){
+    array.push(callback(item, i, list));
+  });
+  return array;
+};
+
+//////////////////////////////////////////
+// USING _.map and _.each
+// return array of suspect objects
+const createSuspectObjects = (name) => {
+  return {
+    name: name,
+    color: name.split(' ')[1],
+    speak() {
+      console.log(`My name is ${this.name}`);
+    }
+  };
+};
+
+const suspects = ['Miss Scarlet', 'Colonel Mustard', 'Miss White'];
+const suspectList = _.map(suspects, function(name){
+  return createSuspectObjects(name);
+});
+
+_.each(suspectList, function(suspect){
+  suspect.speak();
+});
+
