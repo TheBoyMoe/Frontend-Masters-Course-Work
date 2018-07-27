@@ -230,6 +230,11 @@ _.filter = function(arr, cb){
 };
 
 // the cb just needs to return a boolean
-_.filter(videoData, function(item){
+const  presentSuspects = _.filter(videoData, function(item){
   return item.present;
-}); 
+});
+
+/// Exercise - return string array of the present suspects
+_.map(presentSuspects, function(item){
+  return item.name;
+});
