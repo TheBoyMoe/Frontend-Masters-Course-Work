@@ -28,3 +28,28 @@ _.from = function(arr){
 _.from = function(arr){
   return Array.prototype.slice.call(arr);
 };
+
+
+///// Scope
+let firstFn = function(){
+  var localVariable = 'local';
+  return secondFn();
+};
+
+let secondFn = function(){
+  return 'second Fn';
+};
+
+
+//// Callbacks
+const ifElse = (condition, isTrue, isFalse) => {
+  return (condition)? isTrue : isFalse;
+};
+
+ifElse(true, ()=> console.log(true), ()=> console.log(false));
+
+//=> ()=> console.log(true)
+
+const increment = (n) => n + 1;
+const square = (n) => n*n;
+const doTheMaths = (n, fn) => fn(n);
