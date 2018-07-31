@@ -1,3 +1,8 @@
+// ADDITIONAL REFERENCES:
+/**
+  1. Object fundamentals: https://javascript.info/object
+  2. 
+*/
 // Type JavaScript here and click "Run Code" or press Ctrl + s
 console.log('Hello, world!');
 
@@ -25,8 +30,24 @@ function makePerson(name, age) {
 	return user;
 }
 
-var vicky = makePerson('Vicky', 24);
+// alternative
+function makePerson(name, age){
+  return {
+    name: name,
+    age: age
+  }
+}
 
+// with ES6 we can shorten the above example
+function makePerson(name, age){
+  return {
+    name,
+    age
+  }
+}
+
+// all used in the same way
+var vicky = makePerson('Vicky', 24);
 
 // /********* Uncomment these lines to test your work! *********/
 console.log(vicky.name); // -> Logs 'Vicky'
