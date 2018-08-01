@@ -3,9 +3,13 @@ const fetcher = document.getElementById("fetcher");
 fetcher.addEventListener("click", fetchImages);
 
 function fetchImages() {
-  fetch("/api").then(data => {
-    processImages(data.imageList);
-  });
+  fetch("/api")
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    processImages(data.images);
+  })
+  .catch(error => console.log(error));
 }
 
 function processImages(images) {
@@ -23,8 +27,8 @@ function processImages(images) {
     author.classList.add("debug-author");
 
     // Populate elements
-    title.innerText = element.photographer;
-    author.innerText = ` by ${element.title}`;
+    title.innerText = element.name;
+    author.innerText = ` by ${element.photographer}`;
     image.src = element.source;
 
     // Append elements
@@ -33,4 +37,5 @@ function processImages(images) {
     item.appendChild(image);
     list.appendChild(item);
   });
+  root.appendChild(list);
 }
