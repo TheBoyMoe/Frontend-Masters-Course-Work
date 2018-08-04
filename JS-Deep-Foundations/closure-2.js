@@ -3,8 +3,10 @@
  * which allows that function to continue to access variables outside of itself
  * even when that function is passed/executed in a different lexical scope.
  * 
- * A closure has access to variables in it's lexical scope, even when it is 
- * executed outside of that lexical scope
+ * A closure has access to variables in it's lexical scope(created in it's outer scope), 
+ * even when it is executed outside of that lexical scope
+ * 
+ * That scope will remain in memory while there exists a closure that has a reference to it
  */
 
 
