@@ -70,3 +70,31 @@ foo('bam'); //=> 'bar4 baz bam'
   * To lock a specific 'this' to a function use bind()
   * To create a new 'this', use the 'new' keyword
   */
+
+/**
+ * Arrow functions and 'this'
+ * 
+ * Arrow functions do NOT have a 'this' keyword, which means when you have an
+ * arrow function with 'this', it is treated a variable
+ * - which results in it looking up the scope chain like any function would when 
+ * determining the value of that variable - arrow functions have a 'this' that behaves
+ * by lexical rules - it looks to it's enclosing scope
+*/
+
+function foo(){
+  return () => this.bar;
+}
+
+var bar = 'bar1';
+var o1 = { bar: 'bar2', foo: foo };
+var o2 = { bar: 'bar3' };
+
+var f1 = foo(); //=> 'this' === window
+var f2 = o1.foo(); //=> 'this' === o1 obj
+var f3 = foo.call(o2); //=> 'this' === o2 obj
+
+f1(); //=> 'bar1'
+f2(); //=> 'bar2'
+f3(); //=> 'bar3'
+
+f1.call(o2); //=> 'bar1'
