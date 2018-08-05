@@ -45,3 +45,28 @@ function foo(baz, bam){
 
 foo = foo.bind(obj, 'baz');
 foo('bam'); //=> 'bar4 baz bam'
+
+/**
+ * New keyword and 'this'
+ *
+ * the new keyword does 4 things
+ * 1. creates a new empty obj
+ * 2. the new obj is linked to another object
+ * 3. the new obj is passed in as the 'this' context to the function call
+ * 4. the new obj is implicitly returned by the function call
+ * 
+ */
+
+ /**
+  * Rules for determining what 'this' points at for any function containing 'this'
+  * (NOTE: order of precedence, 'new' keyword trumps a 'hard' binding)
+  * 
+  * 1. is the function called by 'new'? --> use the newly created obj
+  * 2. is the function called by call(), apply() or bind()? --> use the explicitly provided obj
+  * 3. is the function called on a context obj(a method call on an obj)? --> use that obj
+  * 4. DEFAULT to global obj, except in 'strict mode' where 'this' is undefined
+  * 
+  * To explicitly set 'this', use call() or apply()
+  * To lock a specific 'this' to a function use bind()
+  * To create a new 'this', use the 'new' keyword
+  */
