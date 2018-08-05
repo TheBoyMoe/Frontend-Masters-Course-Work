@@ -15,6 +15,7 @@ Bar.prototype.speak = function() {
 	alert("Hello, " + this.identify() + ".");
 };
 
+// we use the 'new' keyword to instantiate obj instance
 var b1 = new Bar("b1");
 var b2 = new Bar("b2");
 
