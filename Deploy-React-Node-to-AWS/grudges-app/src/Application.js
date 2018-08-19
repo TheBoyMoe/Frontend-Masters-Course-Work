@@ -3,6 +3,11 @@ import NewGrudge from './NewGrudge';
 import Grudges from './Grudges';
 import './Application.css';
 
+// add aws amplify authenticator, wrap the whole app
+// if a user is logged in, user sees app, otherwise 
+// the user will see the authenticator's login page
+import { withAuthenticator } from 'aws-amplify-react';
+
 class Application extends Component {
   state = {
     grudges: [],
@@ -51,4 +56,4 @@ class Application extends Component {
   }
 }
 
-export default Application;
+export default withAuthenticator(Application);
