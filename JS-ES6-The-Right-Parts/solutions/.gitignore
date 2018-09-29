@@ -1,8 +1,0 @@
-node_modules/
-.env
-.env.test
-.env.development
-.cache
-.vscode/
-dist/
-tests/src/components/__snapshots__/
